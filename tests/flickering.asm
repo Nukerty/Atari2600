@@ -110,59 +110,6 @@ StartOfFrame:
   sta WSYNC
   sta WSYNC
 
-  ; I have no idea why I need to put in these extra 46 lines of 85 02 just to
-  ; stabilize my screen on stella. Future self please help
-
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-
-
-
   jmp StartOfFrame
 
   ORG $FFFA

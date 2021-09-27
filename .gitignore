@@ -1,4 +1,7 @@
+# Folders
 .books/**
 .atari/**
-./*.bin
-./*.log
+
+# Files
+*.bin
+*.log
