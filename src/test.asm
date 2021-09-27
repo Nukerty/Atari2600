@@ -1,9 +1,124 @@
   processor 6502
+ 
+  include "macro.h"
+  include "vcs.h"
+ 
+  SEG
+  ORG $F000
 
-  include "./.atari/atari2600/vcs.h"
-  include "./.atari/atari2600/macro.h"
+Reset
 
+StartOfFrame
+
+  ; Start of vertical blank processing
+  lda #0
+  sta VBLANK
+
+  lda #2
+  sta VSYNC
+
+  ; 3 scanlines of VSYNCH signal
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+
+  lda #0
+  sta WSYNC
+
+  ; 37 scanlines of vertical blanks
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+
+  ; 192 scanlines of picture ..
+
+  ldx #0
+  REPEAT 192  ; scanlines
+    
+    inx
+    stx COLUBK
+    sta WSYNC
+
+  REPEND
+
+  lda #%01000010
+  sta VBLANK  ; end of screen
+
+  ; 30 scanlines of overscan
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+  sta WSYNC
+
+  jmp StartOfFrame
+
+  ORG $FFFA
+
+  .word Reset     ; NMI
+  .word Reset     ; RESET
+  .word Reset     ; IRQ
+
+END
 ; sample code
-  NOP
-  nop
 ; end sample code
+
