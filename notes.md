@@ -16,7 +16,7 @@ Taking an original picture of a parrot.
 
 The NTSC scheme has a total of 128 unique colors
 
-![Parrot NTSC Spectrum](./.images/parrot_ntsc.jpg)
+![Parrot NTSC Spectrum](./.images/parrot_ntsc.png)
 ![NTSC Spectrum](./.images/Atari2600_NTSC_palette_color_test_chart.png)
 ![Parrot in NTSC](./.images/parrot_to_ntsc.png)
 
@@ -43,3 +43,20 @@ You really wouldn't want to see the parrot in SECAM scheme
 an extra whopping 46 commands just to stabilize the image in Stella.**
 
 I might have to try out some other emulators to fix that
+
+# Initialization
+
+1. **Long way of doing that** (256 bytes)
+
+```asm
+  #lda 0    ; Load 0 into the accumulator
+  sta $80   ; Load 0 into location $80
+  sta $81   ; Load 0 into location $81
+  sta $82   ; Load 0 into location $82
+
+  ; 128 bytes of this same thing
+
+  sta $FF   ; Load 0 into location $FF
+```
+
+

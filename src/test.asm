@@ -62,15 +62,28 @@ StartOfFrame:
   sta WSYNC
   sta WSYNC
   sta WSYNC
-  sta WSYNC
 
   ; 192 scanlines of picture ..
 
   ldx #0
+  ldy #0
+
   REPEAT 192  ; scanlines
     
+    REPEAT 6
+      nop
+    REPEND
+
     inx
     stx COLUBK
+
+    nop
+    nop
+    nop
+
+    dey
+    sty COLUBK
+
     sta WSYNC
 
   REPEND
@@ -110,9 +123,10 @@ StartOfFrame:
   sta WSYNC
   sta WSYNC
 
-  ; I have no idea why I need to put in these extra 46 lines of 85 02 just to
-  ; stabilize my screen on stella. Future self please help
+  ; I have no idea why I need to put in these extra 47 lines of 85 02 just to
+  ; stabilize my screen on stella (NTSC). Future self please help
 
+  sta WSYNC
   sta WSYNC
   sta WSYNC
   sta WSYNC
