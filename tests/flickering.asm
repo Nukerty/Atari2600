@@ -1,15 +1,14 @@
   processor 6502
  
-  include "macro.asm"
   include "vcs.asm"
+  include "macro.asm"
  
   SEG
   ORG $F000
 
-Reset:
+Reset
 
-StartOfFrame:
-
+StartOfFrame
   ; Start of vertical blank processing
   lda #0
   sta VBLANK
@@ -23,9 +22,10 @@ StartOfFrame:
   sta WSYNC
 
   lda #0
-  sta WSYNC
+  sta VSYNC
 
   ; 37 scanlines of vertical blanks
+  sta WSYNC
   sta WSYNC
   sta WSYNC
   sta WSYNC
@@ -108,59 +108,6 @@ StartOfFrame:
   sta WSYNC
   sta WSYNC
   sta WSYNC
-
-  ; I have no idea why I need to put in these extra 47 lines of 85 02 just to
-  ; stabilize my screen on stella (NTSC). Future self please help
-
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-  sta WSYNC
-
 
 
   jmp StartOfFrame

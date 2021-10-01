@@ -1,6 +1,7 @@
 # Folders
 .books/**
 .atari/**
+history/**
 
 # Files
 *.bin

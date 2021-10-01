@@ -59,4 +59,30 @@ I might have to try out some other emulators to fix that
   sta $FF   ; Load 0 into location $FF
 ```
 
+2. **Shorter way of doing it** (11 bytes / 9 bytes)
+
+```asm
+
+  #ldx 0
+  #ldx 0
+ClearRam
+  sta $80,x
+  inx
+  cpx #$80
+  bne ClearRam
+
+```
+
+```asm
+
+  ldx #$80
+  lda $0
+ClearRam
+  sta 0,x
+  inx
+  bne ClearRam
+
+```
+
+**Note** : _bne_ uses the flag register to obtain the last result flag for operation if that required the 2's compliment method
 
